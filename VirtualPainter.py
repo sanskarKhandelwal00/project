@@ -18,7 +18,7 @@ def virtual_Painter():
     header = overlayList[0]
     drawColor = (255, 0, 255)
     shape = 'freestyle'
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
     cap.set(3, 1280)
     cap.set(4, 720)
 
@@ -44,7 +44,7 @@ def virtual_Painter():
             x0, y0 = lmList[4][1:]
             # 3. Check which fingers are up
             fingers = detector.fingersUp()
-            # print(fingers)
+            print(fingers)
 
             # 4. If Selection Mode - Two finger are up
             if fingers[1] and fingers[2]:
@@ -68,16 +68,16 @@ def virtual_Painter():
                     if x1 < 250:
                         header = overlayList[9]
 
-                    elif 250 <x1 <450 and drawColor == (255,0,255):
+                    elif 250 <x1 <450 and drawColor == (255,0,0):
                         header = overlayList[0]
                         shape = 'freestyle'
-                    elif 550 < x1 < 750 and drawColor == (255,0,255):
+                    elif 550 < x1 < 750 and drawColor == (255,0,0):
                         header = overlayList[6]
                         shape = 'circle'
-                    elif 800 < x1 < 950 and drawColor == (255,0,255):
+                    elif 800 < x1 < 950 and drawColor == (255,0,0):
                         header = overlayList[7]
                         shape = 'rectangle'
-                    elif 1050 < x1 < 1200 and drawColor == (255,0,255):
+                    elif 1050 < x1 < 1200 and drawColor == (255,0,0):
                         header = overlayList[8]
                         shape ='elipse'
                     elif 250 <x1 <450 and drawColor == (255,0,0):
@@ -239,8 +239,6 @@ def virtual_Painter():
         # cv2.imshow("Canvas", imgCanvas)
         # cv2.imshow("Inv", imgInv)
         cv2.waitKey(1)
-
-
 
 
 
